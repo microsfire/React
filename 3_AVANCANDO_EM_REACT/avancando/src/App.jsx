@@ -6,12 +6,22 @@ import ConditionalRender from './components/ConditionalRender'
 import ListRender from './components/ListRender'
 import ShowUserName from './components/ShowUserName'
 import ManageData from './components/manageData'
+import CarDetails from './components/CarDetails'
+import Fragmats from './components/Fragmats'
 
 function App() {
 
   //props passando de varias maneiras mais simples
   const name = "mcscode"
   const [userName] = useState('mcscode')
+
+  // loop em array de objetos
+  const cars =[
+    {id:1, marca:"Fiat", cor:"Preto", ano:2020 ,newCar:false },
+    {id:2, marca:"Palio", cor:"amarelo", ano:2019 ,newCar:true },
+    {id:3, marca:"Renault", cor:"cinza", ano:2021 ,newCar:false },
+    {id:4, marca:"Corsa", cor:"Preto", ano:2020 ,newCar:true },
+  ]
 
   return (
     <>
@@ -27,8 +37,28 @@ function App() {
       <ManageData />
       <ListRender />
       <ConditionalRender />
+      {/**Props */}
       <ShowUserName name={userName}/>
+      {/**Destructuring */}
+      <CarDetails marca="Honda" cor="Preto" ano={2024} newCar={true}/>
+      {/* Reaproveitamento de Componente */}
+      <CarDetails marca="Fiat" cor="Preto" ano={2020} newCar={false}/>
+      <CarDetails marca="Chevrolet" cor="Azul" ano={2024} newCar={true}/>
+      <CarDetails marca="Tesla" cor="Preto" ano={2023} newCar={false}/>
+      {/* Loop em array de objetos */}
+      {cars.map((car) =>
+      <CarDetails
+      key={car.id}
+      marca={car.marca}
+      cor={car.cor}
+      ano={car.ano}
+      newCar={car.newCar} />)}
+
+       {/*Fragments  */}
+       <Fragmats propsFragments= "Test"/>
     </>
+   
+
   )
 }
 
