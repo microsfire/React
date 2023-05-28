@@ -8,6 +8,8 @@ import ShowUserName from './components/ShowUserName'
 import ManageData from './components/manageData'
 import CarDetails from './components/CarDetails'
 import Fragmats from './components/Fragmats'
+import Container from './components/Container'
+import ExecuteFuction from './components/ExecuteFuction'
 
 function App() {
 
@@ -22,6 +24,9 @@ function App() {
     {id:3, marca:"Renault", cor:"cinza", ano:2021 ,newCar:false },
     {id:4, marca:"Corsa", cor:"Preto", ano:2020 ,newCar:true },
   ]
+
+  //Essa função sera esxecultada pelo componente filho
+  const executeFunction = () => console.log('Componente filho execultou')
 
   return (
     <>
@@ -56,6 +61,16 @@ function App() {
 
        {/*Fragments  */}
        <Fragmats propsFragments= "Test"/>
+       {/* Propriedade Children */}
+       <Container newProp='test'>
+        <p>Eu sou um children</p>
+       </Container>
+       <Container newProp='novoValor'>
+        <h3>Eu sou um children 2</h3>
+       </Container>
+       {/* Execultando funçao como paramentro */}
+       <ExecuteFuction myFunction={executeFunction} />
+
     </>
    
 
