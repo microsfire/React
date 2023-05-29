@@ -10,6 +10,8 @@ import CarDetails from './components/CarDetails'
 import Fragmats from './components/Fragmats'
 import Container from './components/Container'
 import ExecuteFuction from './components/ExecuteFuction'
+import ShowMensagem from './components/ShowMensagem'
+import ChangeMensagemState from './components/ChangeMensagemState'
 
 function App() {
 
@@ -27,6 +29,12 @@ function App() {
 
   //Essa função sera esxecultada pelo componente filho
   const executeFunction = () => console.log('Componente filho execultou')
+
+  // Função para state lifit test
+  const [mensagem, setMensagem] = useState("")
+  const handleMensagem = msg => {
+    setMensagem(msg)
+  }
 
   return (
     <>
@@ -70,6 +78,10 @@ function App() {
        </Container>
        {/* Execultando funçao como paramentro */}
        <ExecuteFuction myFunction={executeFunction} />
+       {/* State lift => Elevação de state */}
+       <ShowMensagem msg={mensagem} />
+       <ChangeMensagemState handleMensagem={handleMensagem}/>
+
 
     </>
    
