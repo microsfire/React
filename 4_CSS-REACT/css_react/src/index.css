@@ -1,0 +1,12 @@
+/* In this file I define the global CSS*/
+
+body {
+  margin: 0;
+  padding: 0;
+  padding-bottom: 500px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+h1 {
+  color: rgb(250, 3, 3);
+}
