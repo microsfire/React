@@ -6,8 +6,9 @@ function App() {
 
   return (
     <>
-      <h1>Forms</h1> 
-      <MyForm />
+      <h1>Forms</h1>
+      {/*6-Input de edição */} 
+      <MyForm user={{name:"Marcio", email:"m.c.s@msn.com", bio:"hacker", role:"admin"}}/>
     </>
   )
 }
