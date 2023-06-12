@@ -27,7 +27,7 @@ function App() {
   const [pickedCategory, setPickedCategory] = useState("")
   const [letters, setLetters] = useState([])
 
-  const [guessedLetter, setGuessedLeter] = useState([])
+  const [guessedLetter, setGuessedLetter] = useState([])
   const [wrongLetter, setWrongLetter] = useState([])
   const [guesses, setGuesses] = useState(3)
   const [score, setScore] = useState(0)
@@ -63,15 +63,15 @@ function App() {
   //fill states
   setPickedWord(word)
   setPickedCategory(category)
-  setLetters(letters)
+  setLetters(wordLetters)
 
 
   setGameStage(stages[1].name)
 }
 
 // processing the letter input
-const verifyLetter = () => {
-  setGameStage(stages[2].name)
+const verifyLetter = (letter) => {
+  console.log(letter)
 }
 
 // restart game
@@ -90,6 +90,8 @@ const reset = () => {
       letters={letters}
       guessedLetter={guessedLetter}
       wrongLetter={wrongLetter}
+      guesses={guesses}
+      score={score}
       />}
       {gameStage === 'end' && <GameOver reset={reset} />}
       
