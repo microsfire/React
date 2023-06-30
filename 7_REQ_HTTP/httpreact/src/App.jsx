@@ -3,6 +3,9 @@ import './App.css'
 //hooks
 import { useState, useEffect } from 'react'
 
+// 4 Custon Hook
+import { useFetch } from '../hooks/useFetch'
+
 const url = "http://localhost:3000/products"
 
 const App = () => {
@@ -11,7 +14,11 @@ const App = () => {
   const [name, setName] = useState("")
   const [price, setPrice] = useState("")
 
+  // 4 Custon hook
+  const { data: items, httpConfig } = useFetch(url)
+
   // 1° resgatando dados GET
+  /*
   useEffect(() => {
     async function fetchData() {
       const res = await fetch(url)
@@ -20,6 +27,7 @@ const App = () => {
     }
     fetchData()
   },[])
+  */
   // 2° add produtos POST
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -28,6 +36,7 @@ const App = () => {
       name,
       price,
     }
+    /*
     const res = await fetch(url,{
       method: "POST",
       headers:{
@@ -35,13 +44,24 @@ const App = () => {
       },
       body: JSON.stringify(product)
     })
+    // 3- Carregamento dinamico
+
+    const addedProduct = await res.json()
+    setProducts((prevProducts) => [...prevProducts, addedProduct])
+    */
+
+    // 5 refatorando post
+    httpConfig(product, "POST")
+
+    setName("")
+    setPrice("")
   }
 
   return (
     <>
         <h1>Lista de produtos</h1>
         <ul>
-          {products.map((product) => (
+          {items && items.map((product) => (
             <li key={product.id}>{product.name} - R$: {product.price}</li>
           ))}
         </ul>
