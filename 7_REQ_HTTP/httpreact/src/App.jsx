@@ -36,6 +36,8 @@ const App = () => {
       name,
       price,
     }
+    // 8 - DELETE
+    
     /*
     const res = await fetch(url,{
       method: "POST",
@@ -57,6 +59,10 @@ const App = () => {
     setPrice("")
   }
 
+  const handleRemove = (id) => {
+      httpConfig(id, 'DELETE')
+    }
+
   return (
     <>
         <h1>Lista de produtos</h1>
@@ -66,7 +72,8 @@ const App = () => {
         {!error && (
           <ul>
             {items && items.map((product) => (
-            <li key={product.id}>{product.name} - R$: {product.price}</li>
+            <li key={product.id}>{product.name} - R$: {product.price}
+            <button className='btn' onClick={() => handleRemove(product.id)}>X</button> </li>
             ))}
          </ul>
         )}
@@ -80,7 +87,7 @@ const App = () => {
             Preço:
             <input type="number" name="price" value={price} onChange={(e) => setPrice(e.target.value)} />
           </label>
-          {loading && <input className='btn' type="submit" disabled value="Aguarde" />}
+          {loading && <input type="submit" disabled value="Aguarde" />}
           {!error && <input type="submit" value="Criar" />}
         </form>
         </div>

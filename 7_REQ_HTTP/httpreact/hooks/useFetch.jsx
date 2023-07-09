@@ -9,13 +9,16 @@ export const useFetch = (url) => {
     //Post
     const [config, setConfig] = useState(null)
     const [method, setMethold] = useState(null)
-    const [callFetch, setcallFetch] = useState(false)
+    const [callFetch, setCallFetch] = useState(false)
 
     //6 - loading
     const [loading, setLoading] = useState(false)
 
     //7 - tratando error
     const [error, setError] = useState(null)
+
+    //8 - DELETE
+    const [itemId, setItemId] = useState(null)
 
     //Config
     const httpConfig = (data, method) => {
@@ -28,6 +31,15 @@ export const useFetch = (url) => {
                 body: JSON.stringify(data),
             })
             setMethold(method)
+        }else if (method === 'DELETE'){
+            setConfig({
+                method,
+                headers: {
+                    "Content-type": "application/json",
+                },
+            })
+            setMethold(method)
+            setItemId(data)
         }
     }
 
@@ -60,14 +72,21 @@ export const useFetch = (url) => {
 
     //refatorando Post
     useEffect(() => {
-
      const httpRequest = async ( )=> {
+
+        let json
+
            if (method === "POST") {
             let fetchOptions = [url, config]
             const res = await fetch(...fetchOptions)
-            const json = await res.json()
-            setcallFetch(json)
+            json = await res.json()
+
+        }else if (method === 'DELETE'){
+            const urlDelete = `${url}/${itemId}`
+            const res = await fetch(urlDelete, config)
+            json = await res.json()
         }
+        setCallFetch(json)
      }
      httpRequest()
 
