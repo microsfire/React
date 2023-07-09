@@ -14,6 +14,111 @@
       "name": "mouse",
       "price": "9.99",
       "id": 3
+    },
+    {
+      "name": "cafe",
+      "price": "1.99",
+      "id": 4
+    },
+    {
+      "name": "Bermuda",
+      "price": "15.99",
+      "id": 5
+    },
+    {
+      "name": "bone",
+      "price": "12",
+      "id": 6
+    },
+    {
+      "name": "camiseta",
+      "price": "50",
+      "id": 7
+    },
+    {
+      "name": "cueca",
+      "price": "52",
+      "id": 8
+    },
+    {
+      "name": "smartphone",
+      "price": "5000",
+      "id": 9
+    },
+    {
+      "name": "smartphone",
+      "price": "5000",
+      "id": 10
+    },
+    {
+      "name": "lapis",
+      "price": "1.20",
+      "id": 11
+    },
+    {
+      "name": "teclado sem fio",
+      "price": "125",
+      "id": 12
+    },
+    {
+      "name": "teclado sem fio",
+      "price": "125",
+      "id": 13
+    },
+    {
+      "name": "leite",
+      "price": "1.99",
+      "id": 14
+    },
+    {
+      "name": "leite",
+      "price": "1.99",
+      "id": 15
+    },
+    {
+      "name": "controle",
+      "price": "5",
+      "id": 16
+    },
+    {
+      "name": "controle",
+      "price": "5",
+      "id": 17
+    },
+    {
+      "name": "controle",
+      "price": "5",
+      "id": 18
+    },
+    {
+      "name": "mouse 2",
+      "price": "55",
+      "id": 19
+    },
+    {
+      "name": "suporte",
+      "price": "2",
+      "id": 20
+    },
+    {
+      "name": "",
+      "price": "",
+      "id": 21
+    },
+    {
+      "name": "Calça jeans",
+      "price": "75",
+      "id": 22
+    },
+    {
+      "name": "",
+      "price": "",
+      "id": 23
+    },
+    {
+      "name": "",
+      "price": "",
+      "id": 24
     }
   ]
 }

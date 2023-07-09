@@ -15,7 +15,7 @@ const App = () => {
   const [price, setPrice] = useState("")
 
   // 4 Custon hook
-  const { data: items, httpConfig } = useFetch(url)
+  const { data: items, httpConfig, loading, error } = useFetch(url)
 
   // 1° resgatando dados GET
   /*
@@ -60,11 +60,16 @@ const App = () => {
   return (
     <>
         <h1>Lista de produtos</h1>
-        <ul>
-          {items && items.map((product) => (
+        {/* 6-Loading */}
+        {loading && <p>Carregando dados...</p> }
+        {error && <p>{error}</p> }
+        {!error && (
+          <ul>
+            {items && items.map((product) => (
             <li key={product.id}>{product.name} - R$: {product.price}</li>
-          ))}
-        </ul>
+            ))}
+         </ul>
+        )}
         <div className="add-product">
         <form onSubmit={handleSubmit}>
           <label>
@@ -75,7 +80,8 @@ const App = () => {
             Preço:
             <input type="number" name="price" value={price} onChange={(e) => setPrice(e.target.value)} />
           </label>
-          <input type="submit" value="Criar" />
+          {loading && <input className='btn' type="submit" disabled value="Aguarde" />}
+          {!error && <input type="submit" value="Criar" />}
         </form>
         </div>
     </>
