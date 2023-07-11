@@ -1,0 +1,19 @@
+{
+  "products": [
+    {
+      "name": "Camisa pool",
+      "price": "45.00",
+      "id": 1
+    },
+    {
+      "name": "Calça jeans",
+      "price": "89.99",
+      "id": 2
+    },
+    {
+      "name": "Boné Preto Lacoste",
+      "price": "75",
+      "id": 3
+    }
+  ]
+}
