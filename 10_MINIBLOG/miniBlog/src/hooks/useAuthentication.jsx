@@ -71,5 +71,10 @@ export const useAuthetication = () => {
         return () => setCancelled(true)
     }, [])
 
-    return { auth, createUser, error, loading,}
+    const logout = () => {
+        checkIfIsCancelled()
+        signOut(auth)
+    }
+
+    return { auth, createUser, error, loading, logout }
 }

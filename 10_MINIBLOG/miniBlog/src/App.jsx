@@ -28,6 +28,7 @@ function App() {
 
   const [user, setUser] = useState(undefined)
   const {auth} = useAuthetication()
+  
 
   const loadingUser = user === undefined
 
