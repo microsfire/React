@@ -7,7 +7,7 @@ const Login = () => {
     const [ password, setPassword ] = useState("")
     const [ error, setError ] = useState("")
 
-    const { loading, error: authError } = useAuthetication()
+    const { loading, error: authError, login } = useAuthetication()
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -19,12 +19,8 @@ const Login = () => {
             password,
         }
 
-        if (password !== confirmPassword) {
-            setError(" As senha não são iguais!")
-            return
-        }
-        
-        await createUser(user)
+        const res = await login(user)
+        console.log(res)
 
     } 
 
@@ -59,7 +55,7 @@ const Login = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}/>
             </label>
-            {!loading && <button className='btn'>Cadastrar</button>}
+            {!loading && <button className='btn'>Entrar</button>}
             {loading && <button className='btn' disabled>Aguarde...</button> }
             
            

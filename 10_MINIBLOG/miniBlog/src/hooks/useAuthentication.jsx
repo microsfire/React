@@ -67,14 +67,49 @@ export const useAuthetication = () => {
         }
     }
 
-    useEffect(() => {
-        return () => setCancelled(true)
-    }, [])
-
     const logout = () => {
         checkIfIsCancelled()
         signOut(auth)
     }
 
-    return { auth, createUser, error, loading, logout }
+    const login = async (data) => {
+        checkIfIsCancelled()
+        setLoading(true)
+        setError(false)
+
+        try {
+            await signInWithEmailAndPassword(auth, data.email, data.password)
+        }catch (error) {
+            console.log(error.message)
+            console.log(typeof error.message)
+            console.log(error.message.includes("user-not"))    
+
+            let systemErrorMessage
+
+            if (error.message.includes("user-not-found")) {
+                systemErrorMessage = "Usuário não encontrado"
+            } else if (error.message.includes("wrong-password")) {
+                systemErrorMessage = "Senha incorreta"
+            }else if (error.message.includes("auth/too-many-requests")) {
+                systemErrorMessage = "Tetativas excedidas por favor tente mais tarde" 
+            }else {
+                systemErrorMessage = "Ocorreu um erro por favor tente mais tarde"
+            }
+
+            console.log(systemErrorMessage)
+
+            setError(systemErrorMessage)
+
+        }
+
+        console.log(error)
+
+        setLoading(false)
+    }
+
+    useEffect(() => {
+        return () => setCancelled(true)
+    }, [])
+
+    return { auth, createUser, error, loading, logout, login }
 }
