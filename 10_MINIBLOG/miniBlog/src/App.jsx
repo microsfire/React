@@ -11,6 +11,7 @@ import Login from "./pages/login/Login"
 import Register from "./pages/register/Register"
 import Dashbord from "./pages/dashboard/Dashboard"
 import CreatePost from "./pages/post/CreatePost"
+import Search from "./pages/search/Search"
 // context
 import { AuthProvider } from "./context/AuthContext"
 
@@ -20,6 +21,7 @@ import { useAuthetication } from "./hooks/useAuthentication"
 
 // firebase
 import { onAuthStateChanged } from "firebase/auth"
+
 
 
 
@@ -51,6 +53,7 @@ function App() {
              <Routes>
                <Route path="/" element={ <Home /> } />
                <Route path="/about" element={<About />} />
+               <Route path="/search" element={<Search />} />
                <Route path="/login" element={!user ? <Login /> : <Navigate to="/"/>} />
                <Route path="/register" element={!user ? <Register /> : <Navigate to="/" />} />
                <Route path="/dashboard" element={user ? <Dashbord /> : <Navigate to="/login" />} />
